@@ -5,6 +5,8 @@ KERNEL_SRC = $(SRC_DIR)/kernel
 INCLUDE_DIR = $(BOOT_SRC)/include
 BUILD_DIR = build
 OUTPUT_DIR = output
+LD = i386-elf-ld
+GCC = i386-elf-gcc
 
 # Sources and headers
 C_SOURCES = $(wildcard $(SRC_DIR)/kernel/*.c $(SRC_DIR)/drivers/*.c)
@@ -34,7 +36,7 @@ $(BUILD_DIR)/%.bin : $(BOOT_SRC)/%.asm | $(BUILD_DIR)
 $(BUILD_DIR)/kernel.bin: $(BUILD_DIR)/kernel_entry.o ${OBJ} | $(BUILD_DIR)
 	$(warning OBJ is ${OBJ})
 	$(warning SRCS is ${C_SOURCES})
-	i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
+	$(LD) -o $@ -Ttext 0x1000 $^ --oformat binary
 
 # Assemble kernel entry code
 $(BUILD_DIR)/%.o: $(KERNEL_SRC)/%.asm | $(BUILD_DIR)
@@ -43,7 +45,7 @@ $(BUILD_DIR)/%.o: $(KERNEL_SRC)/%.asm | $(BUILD_DIR)
 # Compile kernel C code
 %.o: %.c ${HEADERS} | $(BUILD_DIR)
 	$(warning HEADERS is ${HEADERS})
-	i386-elf-gcc -ffreestanding -m32 -g -c $< -o $@ -I $(SRC_DIR)
+	$(GCC) -ffreestanding -m32 -g -c $< -o $@ -I $(SRC_DIR)
 
 # Clean up build and output files
 clean:
