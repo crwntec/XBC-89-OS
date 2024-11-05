@@ -1,0 +1,12 @@
+# Ignore build directories
+/build/
+/output/
+
+src/**/*.o
+
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

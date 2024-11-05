@@ -1,5 +1,5 @@
 #include "libscreen.h"
-#include "kernel/low_level.h"
+#include "low_level.h"
 
 int get_screen_offset(int col, int row)
 {
@@ -42,7 +42,10 @@ void print_string(char *string)
     int i = 0;
     while (string[i] != 0)
     {
-        if (string[i] == "\n")
+        if (offset >= MAX_ROWS * MAX_COLS * 2) {
+            offset = scroll_ln(offset);
+        }
+        if (string[i] == '\n')
         {
             offset = get_screen_offset(0, get_row_from_offset(offset) + 1);
         }
@@ -54,6 +57,18 @@ void print_string(char *string)
         i++;
     }
     set_cursor(offset);
+}
+
+int scroll_ln(int offset) {
+    memcopy(
+        (char *) (get_screen_offset(0,1) + VIDEO_ADDRESS),
+        (char *) (get_screen_offset(0,0) + VIDEO_ADDRESS),
+        MAX_COLS * (MAX_ROWS - 1) * 2
+    );
+    for (int col = 0; col < MAX_COLS; col++) {
+        set_char_at(' ', get_screen_offset(col, MAX_ROWS - 1));
+    }
+    return offset - 2 * MAX_COLS;
 }
 
 void clear_screen()

@@ -20,6 +20,6 @@ void port_word_out(unsigned short data, unsigned short port) {
 
 void memcopy(char *source, char *dest, int nbytes) {
     for (int i = 0; i < nbytes;i++) {
-        *(dest + 1) = *(source + i);
+        *(dest + i) = *(source + i);
     }
 }
