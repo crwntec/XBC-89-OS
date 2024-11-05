@@ -1,6 +1,4 @@
-// low_level.h
-#ifndef LOW_LEVEL_H
-#define LOW_LEVEL_H
+#pragma once
 
 unsigned char port_byte_in(unsigned short port);
 void port_byte_out(unsigned short port, unsigned char data);
@@ -8,4 +6,3 @@ unsigned short port_word_in(unsigned short port);
 void port_word_out(unsigned short port, unsigned short data);
 
 void memcopy(char *source, char *dest, int nbytes);
-#endif // LOW_LEVEL_H

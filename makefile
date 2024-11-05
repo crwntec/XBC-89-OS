@@ -10,8 +10,8 @@ LD = i386-elf-ld
 GCC = i386-elf-gcc
 
 # Sources and headers
-C_SOURCES = $(wildcard $(KERNEL_SRC)/*.c $(DRIVERS_SRC)/*.c $(SRC_DIR)/include/*.c)
-HEADERS = $(wildcard $(KERNEL_SRC)/*.h $(DRIVERS_SRC)/*.h $(SRC_DIR)/include/*.h)
+C_SOURCES = $(wildcard $(KERNEL_SRC)/*.c $(DRIVERS_SRC)/*.c $(SRC_DIR)/cpu/*.c)
+HEADERS = $(wildcard $(KERNEL_SRC)/*.h $(DRIVERS_SRC)/*.h $(SRC_DIR)/cpu/*.h)
 OBJ = $(patsubst $(SRC_DIR)/%, $(BUILD_DIR)/%, $(C_SOURCES:.c=.o))
 
 # Final image
@@ -34,7 +34,7 @@ $(BUILD_DIR)/%.bin: $(BOOT_SRC)/%.asm | $(BUILD_DIR)
 	nasm -f bin $< -o $@ -I $(INCLUDE_DIR)
 
 # Link kernel binary
-$(BUILD_DIR)/kernel.bin: $(BUILD_DIR)/kernel_entry.o $(OBJ) | $(BUILD_DIR)
+$(BUILD_DIR)/kernel.bin: $(BUILD_DIR)/kernel_entry.o $(BUILD_DIR)/interrupt.o $(OBJ) | $(BUILD_DIR)
 	$(warning OBJ is $(OBJ))
 	$(warning HEADERS is $(HEADERS))
 	$(warning CSRCS is $(C_SOURCES))
@@ -43,11 +43,12 @@ $(BUILD_DIR)/kernel.bin: $(BUILD_DIR)/kernel_entry.o $(OBJ) | $(BUILD_DIR)
 # Assemble kernel entry code
 $(BUILD_DIR)/%.o: $(KERNEL_SRC)/%.asm | $(BUILD_DIR)
 	nasm $< -f elf -o $@
-
+$(BUILD_DIR)/interrupt.o: $(SRC_DIR)/cpu/interrupt.asm | $(BUILD_DIR)
+	nasm $< -f elf -o $@
 # Compile kernel and driver C code
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(BUILD_DIR)
 	@mkdir -p $(dir $@)
-	$(GCC) -ffreestanding -m32 -g -c $< -o $@ -I $(SRC_DIR)/include -I $(SRC_DIR)
+	$(GCC) -ffreestanding -m32 -g -c $< -o $@ -I $(SRC_DIR)/cpu -I $(SRC_DIR)
 
 # Clean up build and output files
 clean:

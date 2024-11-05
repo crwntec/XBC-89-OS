@@ -1,5 +1,5 @@
 #include "libscreen.h"
-#include "low_level.h"
+#include <cpu/low_level.h>
 
 int get_screen_offset(int col, int row)
 {
@@ -57,6 +57,15 @@ void print_string(char *string)
         i++;
     }
     set_cursor(offset);
+}
+
+void print_nl() {
+    print_string("\n");
+}
+
+void print_backspace() {
+    set_char_at(' ', get_cursor() - 2);
+    set_cursor(get_cursor() - 2);
 }
 
 int scroll_ln(int offset) {
