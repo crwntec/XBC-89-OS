@@ -1,3 +1,4 @@
 #pragma once
 
-void execute_command(char* input);
+void execute(char* input);
+void execute_combination(char* input);

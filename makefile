@@ -10,8 +10,8 @@ LD = i386-elf-ld
 GCC = i386-elf-gcc
 
 # Sources and headers
-C_SOURCES = $(wildcard $(KERNEL_SRC)/*.c $(DRIVERS_SRC)/*.c $(SRC_DIR)/cpu/*.c)
-HEADERS = $(wildcard $(KERNEL_SRC)/*.h $(DRIVERS_SRC)/*.h $(SRC_DIR)/cpu/*.h)
+C_SOURCES = $(wildcard $(KERNEL_SRC)/*.c $(DRIVERS_SRC)/*.c $(SRC_DIR)/cpu/*.c $(SRC_DIR)/firmware/*.c)
+HEADERS = $(wildcard $(KERNEL_SRC)/*.h $(DRIVERS_SRC)/*.h $(SRC_DIR)/cpu/*.h $(SRC_DIR)/firmware/*.h)
 OBJ = $(patsubst $(SRC_DIR)/%, $(BUILD_DIR)/%, $(C_SOURCES:.c=.o))
 
 # Final image
