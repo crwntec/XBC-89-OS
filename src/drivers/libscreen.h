@@ -18,6 +18,7 @@ void set_cursor(int offset);
 
 void set_char_at(char character, int offset);
 void print_string(char *string);
+void print_fmt(char* format, ...);
 void print_nl();
 void print_backspace();
 
