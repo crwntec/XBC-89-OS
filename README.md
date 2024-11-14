@@ -3,7 +3,7 @@
 </p>
 <p align="center"><h1 align="center">XBC-89-OS</h1></p>
 <p align="center">
-    <em><code>❯Xtremly Basic Calculator</code></em>
+    <em><code>❯ Xtremly Basic Calculator</code></em>
 </p>
 <p align="center">
     <!-- local repository, no metadata badges. --></p>
