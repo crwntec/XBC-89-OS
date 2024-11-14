@@ -28,6 +28,7 @@ $(OUTPUT_DIR) $(BUILD_DIR):
 # Create image by concatenating bootloader and kernel binary
 $(OUTPUT_DIR)/image.bin: $(BUILD_DIR)/boot.bin $(BUILD_DIR)/kernel.bin | $(OUTPUT_DIR)
 	cat $^ > $@
+	truncate --size=1M $@
 
 # Assemble bootloader
 $(BUILD_DIR)/%.bin: $(BOOT_SRC)/%.asm | $(BUILD_DIR)

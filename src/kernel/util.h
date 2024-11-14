@@ -5,6 +5,10 @@
 
 #define NaN 0.f / 0.f
 
+#ifndef NULL
+#define NULL ((void*)0)
+#endif
+
 #define low_16(address) (uint16_t)((address) & 0xFFFF)
 #define high_16(address) (uint16_t)(((address) >> 16) & 0xFFFF)
 

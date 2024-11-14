@@ -22,7 +22,7 @@ jmp $
 [bits 16]
 load_kernel:
     mov bx, KERNEL_OFFSET
-    mov dh, 17
+    mov dh, 25
     mov dl, [BOOT_DRIVE]
     call disk_load
     ret

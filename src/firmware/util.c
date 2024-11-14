@@ -10,15 +10,21 @@ int is_digit(char c)
 int is_num(char s[])
 {
     int i = 0;
+    if (s[i] == '-') i++;
+    int has_digit = 0;
+    int has_decimal = 0;
     while (s[i] != '\0')
     {
-        if (!is_digit(s[i]) && s[i] != '.')
-        {
-            return 0;
+        if (is_digit(s[i])) {
+            has_digit = 1;
+        } else if (s[i] == '.' && !has_decimal) {
+            has_decimal = 1;  // Allow only one decimal point
+        } else {
+            return 0;  // Invalid character found
         }
         i++;
     }
-    return 1;
+    return has_digit;
 }
 
 int is_op(char s[])
@@ -27,7 +33,9 @@ int is_op(char s[])
     char operands[] = "+-*/";
     int i = 0;
     while (operands[i]!='\0') {
-        if (c==operands[i]) return 1;
+        if (c==operands[i]) {
+            return 1;
+        };
         i++;
     }
     
