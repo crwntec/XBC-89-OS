@@ -9,9 +9,9 @@
     <!-- local repository, no metadata badges. --></p>
 <p align="center">Built with the tools and technologies:</p>
 <p align="center">
-    <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=default&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
     <img src="https://img.shields.io/badge/C-A8B9CC.svg?style=default&logo=C&logoColor=black" alt="C">
-    <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=default&logo=GitHub-Actions&logoColor=white" alt="GitHub%20Actions">
+    <img src="https://img.shields.io/badge/-Assembly-000?&logo=assemblyscript" alt "ASM">
+    <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=default&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
 </p>
 <br>
 
