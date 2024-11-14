@@ -41,13 +41,10 @@
 
 ##  Features
 
-<code> 
     - Custom Bootloader
     - 32-Bit protected mode
     - VGA and Keyboard Drivers
     - Arithmetic Calculator
-
-</code>
 
 ---
 
@@ -82,7 +79,7 @@
 <details open>
     <summary><b><code>XBC-89-OS/</code></b></summary>
     <details> <!-- __root__ Submodule -->
-        <summary><b>__root__</b></summary>
+        <summary><b></b></summary>
         <blockquote>
             <table>
             <tr>
@@ -269,6 +266,7 @@
 Before getting started with os, ensure your runtime environment meets the following requirements:
 
 - **Programming Language:** C and Assembly
+- **Emulator:** Qemu or similar
 
 
 ###  Installation
@@ -350,7 +348,7 @@ echo 'make run'
 
 ##  Acknowledgments
 
-- Writing a Simple Operating System - from Scratch by Nick Blundell [Link](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf) (sadly incomplete :( )
+- Writing a Simple Operating System - from Scratch by Nick Blundell [Link](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf) (sadly incomplete :(   )
 - Making an OS (x86) series by Daedalus Community [Link](https://www.youtube.com/playlist?list=PLm3B56ql_akNcvH8vvJRYOc7TbYhRs19M)
 
 ---
